@@ -11,6 +11,7 @@ const projectileSpeed = 20;
 const damage = 15;
 const deathRange = 14
 
+let speed = 6
 let frame = 0;
 let hue = 0;
 let ESValue = 40
@@ -50,8 +51,8 @@ class Particle {
             x: Math.random() * (5 - (-5)) + (-5),
             y: Math.random() * (5 - (-5)) + (-5)
         };
-        this.speed = Math.random() * 3;
-        this.dcreaseVal = 0.05;
+        this.speed = Math.random() * 2;
+        this.dcreaseVal = 0.1;
     }
     draw() {
         c.beginPath();
@@ -75,7 +76,6 @@ class Enemy {
         this.radius = radius;
         this.color = color;
         this.velocity = velocity;
-        this.speed = 8;
     }
     draw() {
         c.beginPath();
@@ -86,8 +86,8 @@ class Enemy {
     }
     update() {
         this.draw();
-        this.x += this.velocity.x * this.speed;
-        this.y += this.velocity.y * this.speed;
+        this.x += this.velocity.x * speed;
+        this.y += this.velocity.y * speed;
     }
 }
 
@@ -175,13 +175,13 @@ function updateEnemies() {
             if (Math.hypot(Math.abs(e.x - p.x), Math.abs(e.y - p.y)) < e.radius + p.radius) {
                 e.radius -= damage;
                 projectiles.splice(pInd, 1);
-                explodeParticles(e.x, e.y, 150);
                 score += 250;
             }
         });
         if (e.radius < deathRange) {
+            explodeParticles(e.x,e.y,150)
             enemies.splice(ind, 1);
-            score += 250;
+            speed += 0.10
         }
         else if(Math.hypot(Math.abs(e.x - player.x), Math.abs(e.y - player.y)) < e.radius + player.radius){
             hp -= e.radius;

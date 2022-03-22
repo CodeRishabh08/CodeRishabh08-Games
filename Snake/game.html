@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        display: flex;
+        background-image: radial-gradient(circle, #93f2b0, #78dc8b, #5ec666, #47af3d, #2f9900);
+        align-items: center;
+        justify-content: center;
+    }
+    canvas{
+        border : 2px solid black
+    }
+    .info{
+        position: absolute;
+        left : 0;
+        height: 50vh;
+        padding: 50px;
+    }
+    .info div{
+        font-size: 30px;
+        padding-bottom: 20px;
+        font-family: cursive;
+    }
+</style>
+<body>
+    <section class="info">
+        <div>Score : <span class="score">0</span></div>
+        <div>Level : <span class="level">1</span></div>
+        <div>High Score : <span class="highscr">0</span></div>
+    </section>
+    <canvas id="canvas"></canvas>
+</body>
+<script src="game.js"></script>
+</html>
